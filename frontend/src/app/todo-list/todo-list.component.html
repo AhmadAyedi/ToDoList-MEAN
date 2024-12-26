@@ -1,0 +1,36 @@
+<!-- <p>todo-list works!</p>
+<div>
+    <h1>Todo List</h1>
+    <input [(ngModel)]="task" placeholder="New task" />
+    <button (click)="addTodo()">Add</button>
+    <ul>
+        <li *ngFor="let todo of todos">
+            <span [style.textDecoration]="todo.completed ? 'line-through' : 'none'">{{ todo.task }}</span>
+            <button (click)="updateTodo(todo)">Toggle</button>
+            <button (click)="deleteTodo(todo._id)">Delete</button>
+        </li>
+    </ul>
+</div> -->
+
+
+<div class="container">
+    <h1>Todo List</h1>
+    <mat-card>
+        <mat-form-field class="full-width">
+            <mat-label>New Task</mat-label>
+            <input matInput [(ngModel)]="task" placeholder="Enter new task" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addTodo()">Add</button>
+    </mat-card>
+    <mat-card *ngFor="let todo of todos" class="todo-item">
+        <mat-list>
+            <mat-list-item>
+                <span [style.textDecoration]="todo.completed ? 'line-through' : 'none'">{{ todo.task }}</span>
+                <button mat-button color="accent" (click)="updateTodo(todo)">
+                    {{ todo.completed ? 'Undo' : 'Complete' }}
+                </button>
+                <button mat-button color="warn" (click)="deleteTodo(todo._id)">Delete</button>
+            </mat-list-item>
+        </mat-list>
+    </mat-card>
+</div>
